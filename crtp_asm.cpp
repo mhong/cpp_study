@@ -26,9 +26,13 @@ class Derived : public Base {
   }
 };
 
+void __attribute__ ((noinline)) foo(Base *obj) {
+  obj->interface();
+}
+
 int main() {
   Base *obj = new Derived();
-  obj->interface();
+  foo(obj);
   delete obj;
   return 0;
 }
